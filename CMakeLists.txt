@@ -69,7 +69,7 @@ set_target_properties(openpnp-capture PROPERTIES
                       VERSION ${OPENPNP_CAPTURE_LIB_VERSION}
                       SOVERSION ${OPENPNP_CAPTURE_LIB_SOVERSION})
 
-IF (WIN32)
+IF (WIN32 OR WIN64)
     if(MSVC)
         # build with static runtime rather than DLL based so that we
         # don't have to distribute it
