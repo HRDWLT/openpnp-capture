@@ -59,7 +59,7 @@ endif(CMAKE_BUILD_TYPE MATCHES Release)
 include_directories(include)
 
 # create our capture library
-add_library(openpnp-capture SHARED common/libmain.cpp
+add_library(openpnp-capture STATIC common/libmain.cpp
                                    common/context.cpp
                                    common/logging.cpp
                                    common/stream.cpp)
@@ -69,7 +69,7 @@ set_target_properties(openpnp-capture PROPERTIES
                       VERSION ${OPENPNP_CAPTURE_LIB_VERSION}
                       SOVERSION ${OPENPNP_CAPTURE_LIB_SOVERSION})
 
-IF (WIN32)
+IF (WIN32 OR WIN64)
     if(MSVC)
         # build with static runtime rather than DLL based so that we
         # don't have to distribute it
@@ -161,11 +161,6 @@ ELSEIF(UNIX)
     install(TARGETS openpnp-capture EXPORT openpnp-capture
             DESTINATION ${CMAKE_INSTALL_LIBDIR}
             COMPONENT libraries)
-
-    # add cmake install target
-    install(EXPORT openpnp-capture
-            DESTINATION ${CMAKE_INSTALL_LIBDIR}/cmake/openpnp-capture
-            COMPONENT libraries)
-
+            
 ENDIF()
 
