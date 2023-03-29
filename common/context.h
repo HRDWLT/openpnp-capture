@@ -163,7 +163,7 @@ public:
         @param outValue a reference to the int32_t that will receive the value of the property.
         @return true if succesful.
     */
-    bool getStreamProperty(int32_t stream, uint32_t propID, int32_t &outValue);
+    bool getStreamProperty(int32_t streamID, uint32_t propretyID, int32_t &outValue);
 
     /** Get the value of a property, such as exposure or white balance.
 
@@ -172,7 +172,7 @@ public:
         @param enable a reference to a boolean that will receive the state of the auto setting.
         @return true if succesful.
     */
-    bool getStreamAutoProperty(int32_t stream, uint32_t propID, bool &enable);
+    bool getStreamAutoProperty(int32_t streamID, uint32_t propretyID, bool &enable);
 
 protected:
     /** Enumerate all capture devices and put their 
